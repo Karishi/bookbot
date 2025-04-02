@@ -21,3 +21,23 @@ def sort_dict(dict):
             list_of_dicts.append(mini)
     list_of_dicts.sort(reverse=True, key=sort_on)
     return list_of_dicts
+
+def slice_by_word(string):
+    words = string.split()
+    word_dict = {}
+    for word in words:
+        word = trim(word)
+        if word.lower() in word_dict:
+            word_dict[word.lower()] += 1
+        else:
+            word_dict[word.lower()] = 1
+    return word_dict
+
+def trim(string):
+    if string[0] == '\"':
+        string = string[1:]
+    if string[-1] == "\"":
+        string = string[:-2]
+    if string[-1] == "." or string[-1] == ",":
+        string = string[:-2]
+    return string
