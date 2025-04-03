@@ -17,9 +17,16 @@ def main():
     print(f"Found {get_num_words(manuscript)} total words")
     print("--------- Word Analysis ---------")
     word_dict = slice_by_word(manuscript)
-    word_list = sort_dict(word_dict)
-    for word in range(100):
-        print(f"{word_list[word]["character"]}: {word_list[word]["count"]}")
+    out = False
+    while not out:
+        pick = input("Please input a word you want to know about. Type quit! to quit. > ")
+        if pick.lower() == "quit!":
+            out = True
+        elif pick.lower() not in word_dict:
+            print(f"\"{pick.lower()}\" doesn't appear in the book at {address}")
+        else:
+            print(f"\"{pick.lower()}\" appears {word_dict[pick.lower()]} times.")
+
     # print("--------- Character Count -------")
     # letter_dict = count_characters(manuscript)
     # for letter in sort_dict(letter_dict):
